@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.bumptech.glide.Glide;
 import com.demo.vjrutnat.mp3.R;
 import com.demo.vjrutnat.mp3.adapter.AlbumListAdapter;
 import com.demo.vjrutnat.mp3.adapter.SongListAdapter;
@@ -88,10 +89,10 @@ public class AlbumListActivity extends AppCompatActivity {
     private void showCover() {
 
         String path = mListSong.get(0).getAlbumImagePath();
-        if (path != null) {
-            File file = new File(path);
-            Uri uri = Uri.fromFile(file);
-            mIvAlbumCover.setImageURI(uri);
+        if(path != null) {
+            Glide.with(this).load(path).into(mIvAlbumCover);
+        }else{
+            mIvAlbumCover.setImageResource(R.drawable.default_album_cover);
         }
         tvAlbumTitle.setText(mListSong.get(0).getAlbum());
     }

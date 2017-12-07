@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.bumptech.glide.Glide;
 import com.demo.vjrutnat.mp3.R;
 import com.demo.vjrutnat.mp3.adapter.ArtistAdapter;
 import com.demo.vjrutnat.mp3.adapter.SongListAdapter;
@@ -69,11 +70,10 @@ public class ArtistListActivity extends AppCompatActivity {
 
         String path = mLstSong.get(0).getAlbumImagePath();
         if (path != null) {
-            File file = new File(path);
-            Uri uri = Uri.fromFile(file);
-            ivArtist.setImageURI(uri);
+            Glide.with(this).load(path).into(ivArtist);
+        } else {
+            ivArtist.setImageResource(R.drawable.default_artist_cover);
         }
-//        tvAlbumTitle.setText(mListSong.get(0).getAlbum());
     }
 
     private void getDataFromIntentAndShow() {

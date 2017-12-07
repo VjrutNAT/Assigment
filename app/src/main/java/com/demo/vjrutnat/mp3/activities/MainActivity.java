@@ -148,11 +148,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         unregisterReceiver(broadcastReceiverUpdatePlaying);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
     private void updatePlayingState() {
         if (musicService.isPlaying()) {

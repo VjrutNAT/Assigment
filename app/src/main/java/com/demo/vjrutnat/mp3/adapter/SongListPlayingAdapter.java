@@ -1,5 +1,6 @@
 package com.demo.vjrutnat.mp3.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,7 +11,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -31,7 +31,7 @@ import java.util.Collections;
 
 public class SongListPlayingAdapter extends RecyclerView.Adapter<SongListPlayingAdapter.ViewHolderSongPlaying> implements ItemTouchHelperAdapter{
 
-    public static final String KEY_ID_SWITH = "key_id_switch";
+    public static final String KEY_ID_SWITCH = "key_id_switch";
     private final OnStartDragListener mOnStartDragListener;
     Context mContext;
     ArrayList<Song> mData;
@@ -51,6 +51,7 @@ public class SongListPlayingAdapter extends RecyclerView.Adapter<SongListPlaying
         return holder;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onBindViewHolder(final ViewHolderSongPlaying holder, int position) {
         Song item = mData.get(position);
@@ -63,7 +64,7 @@ public class SongListPlayingAdapter extends RecyclerView.Adapter<SongListPlaying
         }
         holder.tvTitle.setText(item.getTitle());
         holder.tvArtist.setText(item.getArtist());
-        holder.rlHandle.setOnTouchListener(new View.OnTouchListener() {
+        holder.ivTab.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if (MotionEventCompat.getActionMasked(motionEvent) == MotionEvent.ACTION_DOWN) {
@@ -94,7 +95,7 @@ public class SongListPlayingAdapter extends RecyclerView.Adapter<SongListPlaying
 
     public class ViewHolderSongPlaying extends RecyclerView.ViewHolder implements View.OnClickListener, ItemTouchHelperViewHolder {
         int id;
-        private RelativeLayout rlHandle;
+        private ImageView ivTab;
         private ImageView imgAlbum;
         private TextView tvTitle;
         private TextView tvArtist;
@@ -102,7 +103,7 @@ public class SongListPlayingAdapter extends RecyclerView.Adapter<SongListPlaying
 
         public ViewHolderSongPlaying(View itemView) {
             super(itemView);
-            rlHandle = (RelativeLayout) itemView.findViewById(R.id.rl_info_song_play);
+            ivTab = (ImageView) itemView.findViewById(R.id.iv_tab);
             imgAlbum = (ImageView) itemView.findViewById(R.id.img_album_song_play);
             tvTitle = (TextView) itemView.findViewById(R.id.tv_song_name_play);
             tvArtist = (TextView) itemView.findViewById(R.id.tv_artist_song_play);
@@ -120,7 +121,7 @@ public class SongListPlayingAdapter extends RecyclerView.Adapter<SongListPlaying
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(Constants.ACTION_SWITCH_SONG);
-            intent.putExtra(KEY_ID_SWITH, id);
+            intent.putExtra(KEY_ID_SWITCH, id);
             mContext.sendBroadcast(intent);
 
             Intent intent1 = new Intent(Constants.ACTION_CHANGE_ALBUM_ART);

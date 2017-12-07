@@ -168,7 +168,7 @@ public class PlayMusicActivity extends AppCompatActivity implements View.OnClick
     BroadcastReceiver broadcastReceiverSwitchSong = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            currentPos = intent.getExtras().getInt(SongListPlayingAdapter.KEY_ID_SWITH);
+            currentPos = intent.getExtras().getInt(SongListPlayingAdapter.KEY_ID_SWITCH);
             path = mData.get(currentPos).getPath();
             mPlayMusicService.setDataForNotification(mData,
                     currentPos, mData.get(currentPos), mData.get(currentPos).getAlbumImagePath());

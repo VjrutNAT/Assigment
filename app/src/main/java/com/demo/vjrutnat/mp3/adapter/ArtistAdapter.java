@@ -57,7 +57,7 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.ViewHolder
         if(path != null) {
             Glide.with(mContext).load(path).into(holder.ivArtist);
         }else{
-            holder.ivArtist.setImageResource(R.drawable.default_cover_big);
+            holder.ivArtist.setImageResource(R.drawable.default_artist_cover);
         }
         holder.setId(position);
     }

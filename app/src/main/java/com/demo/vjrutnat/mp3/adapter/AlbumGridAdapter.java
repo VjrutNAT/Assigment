@@ -48,7 +48,7 @@ public class AlbumGridAdapter extends RecyclerView.Adapter<AlbumGridAdapter.View
         if(path != null) {
             Glide.with(mContext).load(path).into(holder.ivImgAlbum);
         }else{
-            holder.ivImgAlbum.setImageResource(R.drawable.default_cover_big);
+            holder.ivImgAlbum.setImageResource(R.drawable.default_album_cover);
         }
         holder.tvAlbumTitle.setText(item.getTitle());
         holder.tvArtist.setText(item.getArtist());

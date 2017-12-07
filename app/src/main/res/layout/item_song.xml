@@ -13,6 +13,7 @@
         android:layout_height="55dp"
         android:layout_centerVertical="true"
         android:scaleType="fitXY"
+        android:layout_margin="4dp"
         android:src="@mipmap/ic_launcher" />
 
     <RelativeLayout
